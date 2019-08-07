@@ -30,9 +30,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.firebase:firebase-core:17.0.1'
-    implementation('com.google.firebase:firebase-firestore:18.0.1') {
-        exclude module: 'guava'
-    }
+    implementation 'com.google.firebase:firebase-firestore:20.2.0'
 }
 repositories {
     mavenCentral()
