@@ -3,6 +3,8 @@
 # Geo-FireStore-Query
 This project is created to give support to search geo-location based items using firestore's native query which also supports pagination and all the kind of condition which firestore query does.
 
+[![](https://miro.medium.com/max/1400/1*a2Da_CQHUsSKTCTRI2tYhQ.png)]()
+
 **Step 1.** Add the JitPack repository to your root (project level) build.gradle
 
 ```gradle
