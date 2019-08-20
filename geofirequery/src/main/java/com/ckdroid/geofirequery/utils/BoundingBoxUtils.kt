@@ -105,8 +105,8 @@ class BoundingBoxUtils(private val distanceUnit: DistanceUnit) {
 
     companion object {
 
-        private const val EARTH_RADIUS_KM = 6371000//6371.001
-        private const val EARTH_RADIUS_MILES = 3958756
+        private const val EARTH_RADIUS_KM = 6371.001
+        private const val EARTH_RADIUS_MILES = 3958.756
 
         private const val THREE_PI = Math.PI.times(3)
         private const val TWO_PI = Math.PI.times(2)
