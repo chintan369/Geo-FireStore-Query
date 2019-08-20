@@ -1,6 +1,7 @@
 package com.ckdroid.geofirequery.utils
 
 import com.ckdroid.geofirequery.model.BoundingBox
+import com.ckdroid.geofirequery.model.Bounds
 import com.ckdroid.geofirequery.model.QueryLocation
 import com.google.firebase.firestore.GeoPoint
 import kotlin.math.*
@@ -60,34 +61,23 @@ class BoundingBoxUtils(private val distanceUnit: DistanceUnit) {
         return BoundingBox(minimumLatitude, minimumLongitude, maximumLatitude, maximumLongitude)
     }
 
-    fun getBoundingBoxForNew(queryLocation: QueryLocation, distance: Double): BoundingBox {
+    fun getBoundingBoxForNew(queryLocation: QueryLocation, distance: Double): Bounds {
         val nearByLocationList: MutableList<GeoPoint> = mutableListOf()
 
         (1..200).forEach { _ ->
             nearByLocationList.add(pointAtDistance(queryLocation, distance))
         }
 
-        if (nearByLocationList.isNotEmpty()) {
-            val sortedBounds = nearByLocationList.sortedWith(compareBy({ it.latitude }, { it.longitude }))
+        val boundList: MutableList<Double> = mutableListOf()
 
-            val minimumGeoPoint = sortedBounds.first()
-
-            val maximumGeoPoint = sortedBounds.last()
-
-            return BoundingBox(
-                minimumGeoPoint.latitude,
-                minimumGeoPoint.longitude,
-                maximumGeoPoint.latitude,
-                maximumGeoPoint.longitude
-            )
+        for (geoPoint in nearByLocationList) {
+            val bound = (geoPoint.latitude + 90) * 180 + geoPoint.longitude
+            boundList.add(bound)
         }
 
-        return BoundingBox(
-            queryLocation.latitude,
-            queryLocation.longitude,
-            queryLocation.latitude,
-            queryLocation.longitude
-        )
+        val sortedBoundList = boundList.sortedBy { it }
+
+        return Bounds(sortedBoundList.first(), sortedBoundList.last())
     }
 
     private fun pointAtDistance(queryLocation: QueryLocation, distance: Double): GeoPoint {
