@@ -16,7 +16,7 @@ fun Query.whereNearToLocation(
     fieldName: String = DEFAULT_KEY_GEO_DEGREE_MATCH
 ): Query {
     val geoPointUtils = BoundingBoxUtils(distance.unit)
-    val boundingBox = geoPointUtils.getBoundingBox(queryAtLocation, distance.distance)
+    val boundingBox = geoPointUtils.getBoundingBoxForNew(queryAtLocation, distance.distance)
     return orderBy(fieldName)
         .whereGreaterThanOrEqualTo(fieldName, boundingBox.minimumMatch)
         .whereLessThanOrEqualTo(fieldName, boundingBox.maximumMatch)
