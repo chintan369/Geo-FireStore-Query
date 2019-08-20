@@ -38,6 +38,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/geofirequery/src/main/java/com/ckdroid/geofirequery/model/Bounds.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/geofirequery/src/main/java/com/ckdroid/geofirequery/model/Distance.kt">
           <value>
             <set />
