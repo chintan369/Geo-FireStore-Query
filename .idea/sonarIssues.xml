@@ -63,12 +63,42 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../Teetra/app/src/main/java/com/teetra/emotionindex/EmotionIndexRepository.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../Teetra/app/src/main/java/com/teetra/fcmservice/FCMessagingService.kt">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../Teetra/app/src/main/java/com/teetra/marketplace/MarketRepository.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Teetra/app/src/main/java/com/teetra/marketplace/MarketplaceListFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Teetra/app/src/main/java/com/teetra/orders/AllOrdersFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Teetra/app/src/main/java/com/teetra/retrofitapi/ServiceProvider.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Teetra/app/src/main/java/com/teetra/util/ExtentionFunctions.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Teetra/app/src/main/java/com/teetra/work/WorksModel.kt">
           <value>
             <set />
           </value>

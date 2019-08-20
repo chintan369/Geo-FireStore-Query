@@ -91,13 +91,13 @@ class BoundingBoxUtils(private val distanceUnit: DistanceUnit) {
     }
 
     private fun pointAtDistance(queryLocation: QueryLocation, distance: Double): GeoPoint {
-        val sinLat = Math.sin(queryLocation.latitude)
-        val cosLat = Math.cos(queryLocation.latitude)
+        val sinLat = sin(queryLocation.latitude)
+        val cosLat = cos(queryLocation.latitude)
 
         val bearing = Math.random().times(TWO_PI)
         val theta = when (distanceUnit) {
-            DistanceUnit.KILOMETERS -> distance.div(EARTH_RADIUS_KM)
-            DistanceUnit.MILES -> distance.div(EARTH_RADIUS_MILES)
+            DistanceUnit.KILOMETERS -> distance.times(1000).div(EARTH_RADIUS_KM)
+            DistanceUnit.MILES -> distance.times(1000).div(EARTH_RADIUS_MILES)
         }
 
         val sinBearing = sin(bearing)
@@ -115,11 +115,11 @@ class BoundingBoxUtils(private val distanceUnit: DistanceUnit) {
 
     companion object {
 
-        private val EARTH_RADIUS_KM = 6371.000//6371.001
-        private val EARTH_RADIUS_MILES = 3958.756
+        private const val EARTH_RADIUS_KM = 6371000//6371.001
+        private const val EARTH_RADIUS_MILES = 3958756
 
-        private val THREE_PI = Math.PI.times(3)
-        private val TWO_PI = Math.PI.times(2)
+        private const val THREE_PI = Math.PI.times(3)
+        private const val TWO_PI = Math.PI.times(2)
 
         private val MINIMUM_LATITUDE = Math.toRadians(-90.0)  // -PI/2
         private val MAXIMUM_LATITUDE = Math.toRadians(90.0)   //  PI/2
