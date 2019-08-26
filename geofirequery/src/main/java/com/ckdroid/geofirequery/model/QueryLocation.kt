@@ -24,6 +24,7 @@ class QueryLocation {
         private val MAXIMUM_LONGITUDE = Math.toRadians(180.0)  //  PI
 
         const val DEFAULT_KEY_GEO_DEGREE_MATCH = "g"
+        const val KEY_GEO_LOCATION = "geoLocation"
 
         /**
          * @param latitude the latitude in radians
