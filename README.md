@@ -50,20 +50,49 @@ document.set(data)
 val db = FirebaseFirestore.getInstance()
 
 /*Create two object to pass location and distance for radius*/
-val centerLocation = QueryLocation.fromDegrees(centerLatitude, centerLongitude)
+val centerLocation = Location(centerLatitude, centerLongitude)
 val distanceForRadius = Distance(1.0, DistanceUnit.KILOMETERS) // or you can set unit as DistanceUnit.MILES if you want to find for 1 mile
 
-val query = db.collection("users")
+val geoQuery = GeoQuery()
+		.collection("users")
 		.whereEqualTo("status","approved")
 		.whereEqualTo("country","IN")
 		.whereNearToLocation(centerLocation, distanceForRadius, fieldName) 
 		//fieldName if you have passed at time of setLocation else it will take default as "g" if you do not pass
-		.orderBy("createdDateTime",Query.Direction.DESCENDING)
 		.startAfter(lastDocument) //optinal (for pagination)
-		.limit(10)
-		
-query.addSnapshotListener { querySnapShot, firestoreException ->
+		.limit(10) // If you requires only 10 data per query
+```
+
+### Listen continues data with real-time changes
+
+```
+geoQuery.addSnapshotListener { firebaseFirestoreException, addedOrModifiedDataList, removedList  ->
 	...
 	//Do your stuff here
+	//If exception occurs, firebaseFirestoreException will not be null else
+	//In addedOrModifiedDataList, you will get all data that falls within distance and given query 
+	//as either ADDED for first time in query or has MODIFIED as was in the query from first.
+	//In removedList, you will get data which is not relevent to your query or out of distance
 }
+```
+
+### Listen data for only once
+
+```
+geoQuery.get()
+	.addOnCompleteListener { firebaseFirestoreException, addedOrModifiedDataList, removedList  ->
+		...
+		//Do your stuff here
+	}
+```
+
+```
+geoQuery.get()
+	.addOnSuccessListener { addedOrModifiedDataList, removedList  ->
+		...
+		//Do your stuff here
+	}
+	.addOnFailureListener { exception ->
+		//If any exception occured
+	}
 ```
