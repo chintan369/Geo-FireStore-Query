@@ -26,7 +26,7 @@ dependencies {
 
 ## Usage in your Firestore Query
 
-#### To Set Location Value in your document
+### To Set Location Value in your document
 
 ```kotlin
 val db = FirebaseFirestore.getInstance()
@@ -38,6 +38,8 @@ document.set(data)
 		//Set Location After your document created on firestore db
 		document.setLocation(latitude, longitude, fieldName)
 		//fieldName is optional, if you will not pass it will set location in default field named "g"
+		//Also will add field named "geoLocation" as GeoPoint including latitude and longitude
+		//to count distance when querying the data
 	}
 	.addOnFailureListener { exception ->
 		//Document write failed
@@ -85,6 +87,8 @@ geoQuery.get()
 		//Do your stuff here
 	}
 ```
+
+#### OR
 
 ```
 geoQuery.get()
