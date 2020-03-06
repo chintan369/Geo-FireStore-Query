@@ -100,3 +100,7 @@ geoQuery.get()
 		//If any exception occured
 	}
 ```
+
+
+### Support me by Buying me a coffee
+<a href="https://www.buymeacoffee.com/chintan369" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="217px" height="50px" /></a>
